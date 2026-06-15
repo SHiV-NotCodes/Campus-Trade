@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block title %}Listing Details - CAMPUS TRADE{% endblock %}
+
+{% block content %}
+<!-- Hidden input to hold listing ID for JS fetching -->
+<input type="hidden" id="listing-id-placeholder" value="{{ listing_id }}">
+
+<!-- Back navigation -->
+<div style="margin-bottom: 1.5rem;">
+    <a href="/listings" style="display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600; font-size: 0.95rem;">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"></path>
+        </svg>
+        Back to listings
+    </a>
+</div>
+
+<!-- Loading state spinner -->
+<div id="loading-detail-view">
+    <div class="spinner-container">
+        <div class="spinner"></div>
+        <p class="spinner-text">Retrieving item details...</p>
+    </div>
+</div>
+
+<!-- Loaded state layout -->
+<div class="listing-detail-container" id="loaded-detail-view" style="display: none;">
+    <!-- Gallery/Main Info -->
+    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <div class="detail-img-container">
+            <img src="" alt="" class="detail-img">
+            <span class="listing-badge detail-status-badge">Available</span>
+        </div>
+        
+        <div class="detail-main">
+            <div class="detail-header">
+                <div class="detail-meta">
+                    <span class="detail-category">Category</span>
+                </div>
+                <h1 class="detail-title">Item Title</h1>
+                <div class="detail-price">₹0</div>
+            </div>
+            
+            <h2 class="detail-desc-title">Product Description</h2>
+            <div class="detail-desc">Loading description...</div>
+        </div>
+    </div>
+    
+    <!-- Info & Contact Sidebar -->
+    <div class="detail-sidebar">
+        <div class="sidebar-card">
+            <h3>Listing Details</h3>
+            
+            <div class="info-row">
+                <span class="info-label">Seller</span>
+                <span class="info-value val-seller">Student Name</span>
+            </div>
+            
+            <div class="info-row">
+                <span class="info-label">Posted Date</span>
+                <span class="info-value val-date">Date</span>
+            </div>
+            
+            <div class="info-row">
+                <span class="info-label">Status</span>
+                <span class="info-value val-status">Available</span>
+            </div>
+            
+            <!-- Contact Seller Section -->
+            <div class="contact-section">
+                <button class="btn btn-primary contact-btn">Contact Seller</button>
+                <div class="contact-box">
+                    <span style="display: block; font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.25rem;">Contact Information:</span>
+                    <p class="contact-details-val">seller@email.com / +91...</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sidebar-card" style="background-color: var(--primary-light); border-color: rgba(99, 102, 241, 0.2);">
+            <h3 style="border-bottom-color: rgba(99, 102, 241, 0.2); color: var(--primary-hover);">Campus Safety Tips</h3>
+            <ul style="list-style-type: none; font-size: 0.85rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.5rem; padding: 0;">
+                <li style="display: flex; gap: 0.5rem;">
+                    <span>📍</span> Meet in public campus spots (library, canteen, hostel common areas).
+                </li>
+                <li style="display: flex; gap: 0.5rem;">
+                    <span>🔍</span> Check the item condition in person before paying.
+                </li>
+                <li style="display: flex; gap: 0.5rem;">
+                    <span>💸</span> Pay using secure online methods or cash.
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

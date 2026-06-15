@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Browse Items - CAMPUS TRADE{% endblock %}
+
+{% block content %}
+<section style="margin-top: 1rem;">
+    <div style="text-align: center; margin-bottom: 2rem;">
+        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Marketplace Listings</h1>
+        <p style="color: var(--text-secondary);">Find the best second-hand deals from fellow students on campus.</p>
+    </div>
+    
+    <!-- Search and filter filters -->
+    <div class="search-container">
+        <input type="text" placeholder="Search items on campus..." class="search-input" aria-label="Search listings">
+        <button class="btn btn-primary search-btn">Search</button>
+    </div>
+    
+    <!-- Categories Pills Filter -->
+    <div class="category-pills" style="margin-bottom: 3rem;">
+        <button class="category-pill active" data-category="all">All Items</button>
+        <button class="category-pill" data-category="Books">Books</button>
+        <button class="category-pill" data-category="Electronics">Electronics</button>
+        <button class="category-pill" data-category="Calculators">Calculators</button>
+        <button class="category-pill" data-category="Hostel Essentials">Hostel Essentials</button>
+        <button class="category-pill" data-category="Cycles">Cycles</button>
+        <button class="category-pill" data-category="Sports Equipment">Sports Equipment</button>
+        <button class="category-pill" data-category="Furniture">Furniture</button>
+        <button class="category-pill" data-category="Miscellaneous">Miscellaneous</button>
+    </div>
+    
+    <!-- Grid for active listings -->
+    <div class="listings-grid">
+        <!-- Populated via JS script.js -->
+    </div>
+</section>
+{% endblock %}

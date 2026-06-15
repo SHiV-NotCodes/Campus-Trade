@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}My Listings Dashboard - CAMPUS TRADE{% endblock %}
+
+{% block content %}
+<section style="margin-top: 1rem;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+            <h1 style="font-size: 2.5rem; margin-bottom: 0.25rem;">My Listings Dashboard</h1>
+            <p style="color: var(--text-secondary);">Manage items you are selling or have sold on campus.</p>
+        </div>
+        <a href="/create-listing" class="btn btn-primary">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
+            </svg>
+            Post a New Item
+        </a>
+    </div>
+    
+    <!-- Active Listings Section -->
+    <div style="margin-bottom: 3.5rem;">
+        <h2 style="font-size: 1.5rem; margin-bottom: 1.25rem; border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; display: inline-block;">
+            Active Listings
+        </h2>
+        <div id="active-listings">
+            <!-- Loaded via JS -->
+        </div>
+    </div>
+    
+    <!-- Sold Listings Section -->
+    <div>
+        <h2 style="font-size: 1.5rem; margin-bottom: 1.25rem; border-bottom: 2px solid var(--text-muted); padding-bottom: 0.5rem; display: inline-block;">
+            Sold Listings
+        </h2>
+        <div id="sold-listings">
+            <!-- Loaded via JS -->
+        </div>
+    </div>
+</section>
+{% endblock %}

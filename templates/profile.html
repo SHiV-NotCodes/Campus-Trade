@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}My Profile - CAMPUS TRADE{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <h1 style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem;">My Campus Profile</h1>
+    
+    <!-- Loading Screen -->
+    <div id="profile-loading">
+        <div class="spinner-container">
+            <div class="spinner"></div>
+            <p class="spinner-text">Loading profile stats...</p>
+        </div>
+    </div>
+    
+    <!-- Loaded Profile Info -->
+    <div id="profile-view" style="display: none;">
+        <div class="profile-card">
+            <div class="profile-avatar" id="prof-initial">S</div>
+            <div class="profile-details">
+                <h2 id="prof-name">Student Name</h2>
+                <p id="prof-email">student@email.com</p>
+                <div class="profile-joined">Account Synced: <span id="prof-date">Date</span></div>
+            </div>
+        </div>
+        
+        <!-- Stats Count -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-num" id="stat-active">0</div>
+                <div class="stat-label">Active Listings</div>
+            </div>
+            
+            <div class="stat-card" style="border-color: var(--border);">
+                <div class="stat-num" id="stat-sold" style="color: var(--text-secondary);">0</div>
+                <div class="stat-label">Items Sold</div>
+            </div>
+        </div>
+        
+        <!-- Quick actions -->
+        <div style="margin-top: 3rem; text-align: center;">
+            <a href="/my-listings" class="btn btn-secondary" style="margin-right: 0.5rem;">Manage My Items</a>
+            <a href="/create-listing" class="btn btn-primary">Post Another Item</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

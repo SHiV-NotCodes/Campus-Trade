@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}Post an Item - CAMPUS TRADE{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h1 class="form-title">Post an Item for Sale</h1>
+    
+    <form id="create-listing-form" enctype="multipart/form-data">
+        <!-- Title -->
+        <div class="form-group">
+            <label for="title" class="form-label">Item Title *</label>
+            <input type="text" id="title" name="title" class="form-control" placeholder="What are you selling? (e.g. Casio Calculator, Lab Coat)" required>
+        </div>
+        
+        <!-- Category & Price in Grid -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+                <label for="category" class="form-label">Category *</label>
+                <select id="category" name="category" class="form-control" required>
+                    <option value="" disabled selected>Select Category</option>
+                    <option value="Books">Books</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Calculators">Calculators</option>
+                    <option value="Hostel Essentials">Hostel Essentials</option>
+                    <option value="Cycles">Cycles</option>
+                    <option value="Sports Equipment">Sports Equipment</option>
+                    <option value="Furniture">Furniture</option>
+                    <option value="Miscellaneous">Miscellaneous</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="price" class="form-label">Price (₹) *</label>
+                <input type="number" id="price" name="price" class="form-control" placeholder="600" min="0" step="any" required>
+            </div>
+        </div>
+        
+        <!-- Description -->
+        <div class="form-group">
+            <label for="description" class="form-label">Description *</label>
+            <textarea id="description" name="description" class="form-control" placeholder="Provide details about condition, usage, model, and age of the item..." required></textarea>
+        </div>
+        
+        <!-- Seller Contact Details -->
+        <div class="form-group">
+            <label for="contact_info" class="form-label">Contact Details *</label>
+            <input type="text" id="contact_info" name="contact_info" class="form-control" placeholder="Email, phone, or Telegram (e.g. +91 98765 43210)" required>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">This will be visible only to authenticated users who wish to buy your item.</span>
+        </div>
+        
+        <!-- Image Upload -->
+        <div class="form-group">
+            <label class="form-label">Upload Product Image (Optional)</label>
+            <div class="file-upload-wrapper">
+                <input type="file" id="image-upload" name="image" class="file-upload-input" accept="image/*">
+                <div class="file-upload-label">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span>Click or Drag to Upload Image</span>
+                    <span style="font-size: 0.75rem; color: var(--text-muted);">Supports JPG, PNG, WEBP (Max 5MB)</span>
+                </div>
+            </div>
+            <img id="preview-image" src="" alt="Selected Image Preview" class="file-preview">
+        </div>
+        
+        <div class="form-actions">
+            <a href="/" class="btn btn-secondary">Cancel</a>
+            <button type="submit" class="btn btn-primary">Post Listing</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

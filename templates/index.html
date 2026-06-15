@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}CAMPUS TRADE - College Campus Marketplace{% endblock %}
+
+{% block content %}
+<!-- Hero Tagline -->
+<section class="hero-section">
+    <h1 class="hero-title">Campus Trade</h1>
+    <p class="hero-subtitle">The exclusive marketplace for your college campus. Buy and sell books, electronics, calculators, cycles, and hostel essentials directly within your student community.</p>
+    
+    <!-- Hero Search Bar -->
+    <div class="search-container">
+        <input type="text" placeholder="What are you looking for? (e.g. calculator, mattress)" class="search-input" aria-label="Search items">
+        <button class="btn btn-primary search-btn">Search</button>
+    </div>
+</section>
+
+<!-- Browse Categories -->
+<section class="categories-container">
+    <h2 class="section-title">Browse Categories</h2>
+    <div class="category-pills">
+        <a href="/listings?category=Books" class="category-pill">Books</a>
+        <a href="/listings?category=Electronics" class="category-pill">Electronics</a>
+        <a href="/listings?category=Calculators" class="category-pill">Calculators</a>
+        <a href="/listings?category=Hostel%20Essentials" class="category-pill">Hostel Essentials</a>
+        <a href="/listings?category=Cycles" class="category-pill">Cycles</a>
+        <a href="/listings?category=Sports%20Equipment" class="category-pill">Sports Equipment</a>
+        <a href="/listings?category=Furniture" class="category-pill">Furniture</a>
+        <a href="/listings?category=Miscellaneous" class="category-pill">Miscellaneous</a>
+    </div>
+</section>
+
+<!-- Featured Listings Section -->
+<section style="margin-bottom: 4rem;">
+    <div class="section-title">
+        <h2>Recently Added Items</h2>
+        <a href="/listings" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.5rem 1rem;">View All Items</a>
+    </div>
+    
+    <!-- Listings Grid (Rendered Dynamically via JS) -->
+    <div class="listings-grid">
+        <!-- Will be populated by JS -->
+    </div>
+</section>
+{% endblock %}

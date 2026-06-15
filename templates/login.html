@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign In - CAMPUS TRADE{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h1 class="form-title">Sign In to Campus Trade</h1>
+    
+    <!-- Local validation error lists -->
+    {% if errors %}
+        {% for error in errors %}
+            <div class="alert alert-danger" style="margin-bottom: 1rem;">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                </svg>
+                <span>{{ error }}</span>
+            </div>
+        {% endfor %}
+    {% endif %}
+    
+    <form action="/login" method="POST">
+        <!-- Email/Username -->
+        <div class="form-group">
+            <label for="identifier" class="form-label">Email or Username</label>
+            <input type="text" id="identifier" name="identifier" class="form-control" placeholder="Enter your email or username" required autofocus>
+        </div>
+        
+        <!-- Password -->
+        <div class="form-group">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required>
+        </div>
+        
+        <div style="margin-top: 1.5rem; text-align: center;">
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Sign In</button>
+        </div>
+    </form>
+    
+    <div style="margin-top: 1.5rem; text-align: center; font-size: 0.9rem; color: var(--text-secondary);">
+        Don't have an account? <a href="/register" style="font-weight: 600;">Sign Up</a>
+    </div>
+</div>
+{% endblock %}

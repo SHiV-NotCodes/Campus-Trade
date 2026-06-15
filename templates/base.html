@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}CAMPUS TRADE - College Marketplace{% endblock %}</title>
+    
+    <!-- Google Fonts & Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- Expose logged-in User ID to script.js for item ownership checks -->
+    {% if current_user.is_authenticated %}
+        <meta name="current-user-id" content="{{ current_user.id }}">
+    {% endif %}
+    
+    <!-- Application Scripts -->
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="/" class="brand">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                CAMPUS<span>TRADE</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="/listings" class="nav-link">Browse Items</a></li>
+                
+                {% if current_user.is_authenticated %}
+                    <!-- Authenticated Links -->
+                    <li><a href="/my-listings" class="nav-link">My Listings</a></li>
+                    <li><a href="/profile" class="nav-link">Profile</a></li>
+                    <li><a href="/create-listing" class="btn btn-primary">Post Item</a></li>
+                    <li><a href="/logout" class="nav-link" style="color: var(--danger);">Sign Out</a></li>
+                {% else %}
+                    <!-- Guest Links -->
+                    <li><a href="/login" class="nav-link">Sign In</a></li>
+                    <li><a href="/register" class="btn btn-primary">Sign Up</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Flash message alerts -->
+    <div class="main-content" style="padding-bottom: 0; min-height: auto;">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'success' if category == 'success' else 'danger' }}">
+                        <span>{{ message }}</span>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <!-- Main Container -->
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 CAMPUS TRADE. Built exclusively for college communities. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

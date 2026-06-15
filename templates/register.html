@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign Up - CAMPUS TRADE{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h1 class="form-title">Create your Account</h1>
+    
+    <!-- Validation errors block -->
+    {% if errors %}
+        {% for error in errors %}
+            <div class="alert alert-danger" style="margin-bottom: 1rem;">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                </svg>
+                <span>{{ error }}</span>
+            </div>
+        {% endfor %}
+    {% endif %}
+    
+    <form action="/register" method="POST">
+        <!-- Full Name -->
+        <div class="form-group">
+            <label for="name" class="form-label">Full Name *</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Aadit Sharma" value="{{ form_data.name if form_data else '' }}" required autofocus>
+        </div>
+
+        <!-- Username -->
+        <div class="form-group">
+            <label for="username" class="form-label">Username *</label>
+            <input type="text" id="username" name="username" class="form-control" placeholder="aadit_sharma" value="{{ form_data.username if form_data else '' }}" required>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <label for="email" class="form-label">College Email *</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="aadit@college.edu" value="{{ form_data.email if form_data else '' }}" required>
+        </div>
+
+        <!-- Passwords Grid -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+                <label for="password" class="form-label">Password *</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Min. 6 characters" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="confirm_password" class="form-label">Confirm Password *</label>
+                <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="Re-type password" required>
+            </div>
+        </div>
+        
+        <div style="margin-top: 1.5rem; text-align: center;">
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Sign Up</button>
+        </div>
+    </form>
+    
+    <div style="margin-top: 1.5rem; text-align: center; font-size: 0.9rem; color: var(--text-secondary);">
+        Already have an account? <a href="/login" style="font-weight: 600;">Sign In</a>
+    </div>
+</div>
+{% endblock %}

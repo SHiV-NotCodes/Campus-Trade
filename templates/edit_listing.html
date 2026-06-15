@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Listing - CAMPUS TRADE{% endblock %}
+
+{% block content %}
+<input type="hidden" id="listing-id-placeholder" value="{{ listing_id }}">
+
+<div class="form-container">
+    <h1 class="form-title">Edit Your Listing</h1>
+    
+    <!-- Loading spinner -->
+    <div id="loading-edit-view">
+        <div class="spinner-container">
+            <div class="spinner"></div>
+            <p class="spinner-text">Retrieving your listing data...</p>
+        </div>
+    </div>
+    
+    <form id="edit-listing-form" enctype="multipart/form-data" style="display: none;">
+        <!-- Title -->
+        <div class="form-group">
+            <label for="title" class="form-label">Item Title *</label>
+            <input type="text" id="title" name="title" class="form-control" required>
+        </div>
+        
+        <!-- Category & Price in Grid -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+                <label for="category" class="form-label">Category *</label>
+                <select id="category" name="category" class="form-control" required>
+                    <option value="Books">Books</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Calculators">Calculators</option>
+                    <option value="Hostel Essentials">Hostel Essentials</option>
+                    <option value="Cycles">Cycles</option>
+                    <option value="Sports Equipment">Sports Equipment</option>
+                    <option value="Furniture">Furniture</option>
+                    <option value="Miscellaneous">Miscellaneous</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="price" class="form-label">Price (₹) *</label>
+                <input type="number" id="price" name="price" class="form-control" min="0" step="any" required>
+            </div>
+        </div>
+        
+        <!-- Description -->
+        <div class="form-group">
+            <label for="description" class="form-label">Description *</label>
+            <textarea id="description" name="description" class="form-control" required></textarea>
+        </div>
+        
+        <!-- Seller Contact Details -->
+        <div class="form-group">
+            <label for="contact_info" class="form-label">Contact Details *</label>
+            <input type="text" id="contact_info" name="contact_info" class="form-control" required>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">Visible only to authenticated users.</span>
+        </div>
+        
+        <!-- Image Upload -->
+        <div class="form-group">
+            <label class="form-label">Update Image (Optional - leaves current image if empty)</label>
+            <div class="file-upload-wrapper">
+                <input type="file" id="image-upload" name="image" class="file-upload-input" accept="image/*">
+                <div class="file-upload-label">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+                    </svg>
+                    <span>Click or Drag to Upload New Image</span>
+                </div>
+            </div>
+            <img id="preview-image" src="" alt="Listing Image Preview" class="file-preview">
+        </div>
+        
+        <div class="form-actions">
+            <a href="/my-listings" class="btn btn-secondary">Cancel</a>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
